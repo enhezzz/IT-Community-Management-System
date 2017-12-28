@@ -1,0 +1,47 @@
+<nz-layout style="height: 100%;">
+
+  <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="null" >
+
+    <div class="logo">
+    </div>
+    <nz-switch [(ngModel)]="theme">
+      <span checked>Dark</span>
+      <span unchecked>Light</span>
+    </nz-switch>
+    <br>
+    <br>
+    <ul nz-menu [nzTheme]="theme?'dark':'light'" [nzMode]="isCollapsed?'vertical':'inline'">
+      <router-outlet name="identity" ></router-outlet>
+    </ul>
+
+
+    <div class="ant-layout-sider-trigger ng-star-inserted" (click)="isCollapsed=!isCollapsed">
+      <i class="anticon trigger" [class.anticon-menu-fold]="!isCollapsed" [class.anticon-menu-unfold]="isCollapsed"></i>
+    </div>
+  </nz-sider>
+  <!--<nz-header style="background: #fff; padding:0;">-->
+    <!--<i class="anticon trigger" [class.anticon-menu-fold]="!isCollapsed" [class.anticon-menu-unfold]="isCollapsed" (click)="isCollapsed=!isCollapsed"></i>-->
+
+  <!--</nz-header>-->
+  <nz-layout>
+
+
+    <nz-content style="margin:0 16px;">
+      <nz-breadcrumb style="margin:12px 0;position: relative;">
+        <nz-breadcrumb-item>User</nz-breadcrumb-item>
+        <nz-breadcrumb-item>Bill</nz-breadcrumb-item>
+        <nz-tag [nzColor]="'blue'"style="position: absolute;
+        right: 0;">{{userName}}</nz-tag>
+      </nz-breadcrumb>
+      <div style="padding:24px; background: #fff; min-height: 360px;">
+
+        <div *ngIf="isInit">
+          <app-welcome-page></app-welcome-page>
+        </div>
+
+        <router-outlet></router-outlet>
+      </div>
+    </nz-content>
+    <nz-footer style="text-align: center;">Ant Design ©2017 Implement By Angular</nz-footer>
+  </nz-layout>
+</nz-layout>

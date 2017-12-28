@@ -1,0 +1,22 @@
+{
+  "/doLogin": {
+    "target": "http://localhost:8080",
+    "secure": false,
+    "changeOrigin": true
+  },
+  "/doRegister": {
+    "target": "http://localhost:8080",
+    "secure": false,
+    "changeOrigin": true
+  },
+  "/presence": {
+    "target": "http://localhost:8080",
+    "secure": false,
+    "changeOrigin": true
+  } ,
+  "/presence/preslist": {
+    "target": "http://localhost:8080",
+    "secure": false,
+    "changeOrigin": true
+  }
+}
