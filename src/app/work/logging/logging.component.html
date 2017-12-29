@@ -1,0 +1,33 @@
+<div nz-row>
+  <div nz-col [nzSpan]="12" [nzPush]="1">
+    <nz-calendar [nzLocale]="'zh-cn'" [nzFullScreen]="false"
+                 style="width: 290px; border: 1px solid rgb(217, 217, 217);
+              border-radius: 4px;">
+      <ng-template #dateCell let-day>
+        <nz-badge [nzText]="'Sunday'" *ngIf="(day.date|date:'EEE')==='Sun'">
+        </nz-badge>
+        <nz-badge [nzStatus]="'success'" [nzText]="''" *ngIf="confirmPresence(day)"
+                  [class.anticon.anticon-check]="day.isCurrentDay&&loggingState">
+        </nz-badge>
+      </ng-template>
+    </nz-calendar>
+    <button nz-button [nzType]="'primary'" nzSize="large"
+            (click)="logging()" [disabled]="loggingState">
+      <i class="anticon anticon-meh-o"></i><span>{{loggingInfo}}</span>
+    </button>
+  </div>
+  <div nz-col [nzSpan]="12" [nzPull]="1">
+    <nz-card style="width:240px">
+      <ng-template #body>
+        <div class="custom-image">
+          <img alt="example" width="100%" src="../../../assets/img/1.jpg"/>
+        </div>
+        <div class="custom-card">
+          <h3>Europe Street beat</h3>
+          <p>www.instagram.com</p>
+        </div>
+      </ng-template>
+    </nz-card>
+  </div>
+</div>
+

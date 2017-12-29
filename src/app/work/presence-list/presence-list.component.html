@@ -1,0 +1,25 @@
+<nz-table #nzTable [nzAjaxData]="_dataSet"
+          nzShowSizeChanger
+          [(nzPageIndex)]="_current"
+          [(nzPageSize)]="_pageSize"
+          [nzLoading]="_loading"
+          (nzPageIndexChange)="refreshData()"
+          (nzPageSizeChange)="refreshData(true)"
+          [nzTotal]="_total">
+  <thead nz-thead>
+  <tr>
+    <th nz-th><span>姓名</span></th>
+    <th nz-th><span>学号</span></th>
+    <th nz-th><span>出勤次数</span></th>
+  </tr>
+  </thead>
+  <tbody nz-tbody>
+  <tr nz-tbody-tr *ngFor="let data of nzTable.data">
+    <td nz-td>
+      <a>{{data.userName}}</a>
+    </td>
+    <td nz-td>{{data.studentId}}</td>
+    <td nz-td>{{data.date.length}}</td>
+  </tr>
+  </tbody>
+</nz-table>

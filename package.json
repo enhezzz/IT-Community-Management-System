@@ -24,6 +24,7 @@
     "core-js": "^2.4.1",
     "dateformat": "^3.0.2",
     "express": "^4.16.2",
+    "express-session": "^1.15.6",
     "formidable": "^1.1.1",
     "mongodb": "^3.0.0-rc0",
     "ng-zorro-antd": "^0.6.8",

@@ -1,0 +1,7 @@
+<ckeditor [(ngModel)]="ckeditorContent" debounce="500"  [config]="config">
+</ckeditor>
+
+输入的内容：<br> {{ ckeditorContent }}
+<button nz-button [nzType]="'primary'" [nzSize]="'large'">
+  <span>提交</span>
+</button>

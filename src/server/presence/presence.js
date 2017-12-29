@@ -57,9 +57,9 @@ router.get('/record',(req,res) => {
 });
 router.get('/preslist',(req,res) => {
   "use strict";
-  if(req.query.studentId && req.query.page && req.query.results) {
+  if(req.query.page && req.query.results) {
     db.find('presence',
-      {studentId: req.query.studentId},
+      {},
       {
         skip: parseInt((req.query.page - 1) * req.query.results),
         limit: parseInt(req.query.results)

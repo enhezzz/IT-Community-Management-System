@@ -1,0 +1,41 @@
+<nz-spin [nzTip]="'正在登录...'" [nzSpinning]="_isSpinning">
+<form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="_submitForm()">
+  <div nz-form-item nz-row>
+    <div nz-form-label nz-col [nzSpan]="7">
+      <label>学号</label>
+    </div>
+    <div nz-form-control nz-col [nzSpan]="12">
+      <nz-input formControlName="studentId" [nzPlaceHolder]="'请输入学号'" [nzSize]="'large'">
+        <ng-template #prefix>
+          <i class="anticon anticon-user"></i>
+        </ng-template>
+      </nz-input>
+      <div nz-form-explain *ngIf="validateForm.controls.studentId.dirty&&validateForm.controls.studentId.hasError('required')">Please input your studentId!</div>
+    </div>
+  </div>
+  <div nz-form-item nz-row>
+    <div nz-col [nzSpan]="7" nz-form-label>
+      <label>密码</label>
+    </div>
+    <div nz-form-control nz-col [nzSpan]="12" >
+      <nz-input formControlName="password" [nzType]="'password'" [nzPlaceHolder]="'Password'" [nzSize]="'large'">
+        <ng-template #prefix>
+          <i class="anticon anticon-lock"></i>
+        </ng-template>
+      </nz-input>
+      <div nz-form-explain *ngIf="validateForm.controls.password.dirty&&validateForm.controls.password.hasError('required')">Please input your Password!</div>
+    </div>
+  </div>
+  <div nz-form-item nz-row>
+    <div nz-form-control nz-col [nzSpan]="12" [nzOffset]="'7'">
+      <!--<label nz-checkbox formControlName="remember">-->
+        <!--<span>Remember me</span>-->
+      <!--</label>-->
+      <a class="login-form-forgot" class="login-form-forgot">Forgot password</a>
+      <button nz-button class="login-form-button" [nzType]="'primary'" [nzSize]="'large'" [disabled]="!validateForm.valid">Log in</button>
+      <br>Or
+      <a routerLink="/regist">register now!</a>
+    </div>
+  </div>
+</form>
+</nz-spin>
