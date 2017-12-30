@@ -20,6 +20,16 @@ app.get('/checksession',(req,res) => {
     res.json({result: false});
     res.end();
   }
+});
+app.get('/logout',(req,res) => {
+  if(req.session.userName){
+    req.session.destroy(function(err) {
+      if(err)
+      throw err;
+      console.log('退出成功');
+      res.end();
+    })
+  }
 })
 app.listen(8080,'localhost',() => {
   "use strict";

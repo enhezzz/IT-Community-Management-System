@@ -13,7 +13,7 @@
     </nz-calendar>
     <button nz-button [nzType]="'primary'" nzSize="large"
             (click)="logging()" [disabled]="loggingState">
-      <i class="anticon anticon-meh-o"></i><span>{{loggingInfo}}</span>
+      <i [class.anticon.anticon-meh-o]="loggingState"></i><span>{{loggingInfo}}</span>
     </button>
   </div>
   <div nz-col [nzSpan]="12" [nzPull]="1">

@@ -52,6 +52,8 @@ export class LoggingComponent implements OnInit {
     })
   }
   confirmPresence(day: any){
+    if(this.loggingState && day['title'] === dateFormat(new Date(), "yyyy-mm-dd"))
+    return this.loggingState;
     return this.presenceInfo.includes(day['title']);
   }
 }

@@ -16,8 +16,14 @@ export class AppComponent implements OnInit{
     this.http.get('/checksession')
       .subscribe(res => {
         if(res['result']){
-          this.router.navigate([{ outlets: { identity: ['logined']}}]);
-          this.router.navigate(['/login/work'])
+          this.router.navigate([{ outlets: { identity: ['logined']}}],);
+          // if(this.route.url. === '/')
+        
+            this.router.navigate(['/login/work'])
+           
+            
+          
+          
         }else
           this.router.navigate([{ outlets: { identity: ['no-login'] } }],);
       })
@@ -35,5 +41,6 @@ export class AppComponent implements OnInit{
   constructor(private router: Router,
               private checkInit: CheckInitService,
               private checkLogin: CheckLoginService,
-              private http: HttpClient){}
+              private http: HttpClient,
+            private route: ActivatedRoute){}
 }
