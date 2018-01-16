@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from "@angular/router";
+import {Router, ActivatedRoute} from "@angular/router";
 import {NzNotificationService} from "ng-zorro-antd";
 import {GetPresenceInfoService} from "../get-presence-info.service";
 import {HttpClient} from "@angular/common/http";
@@ -18,26 +18,29 @@ export class LoggingComponent implements OnInit {
               private _notification: NzNotificationService,
               private presenceService: GetPresenceInfoService,
               private http: HttpClient,
-              private loginInfo: CheckLoginService) { }
+              private loginInfo: CheckLoginService,
+            private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.router.navigate([{ outlets: { identity: ['logined'] } }]);
     console.log(this.loginInfo.studentId);
     console.log(dateFormat(new Date(), "yyyy-mm-dd"))
-    this.http.get(`/presence/record?studentId=${this.loginInfo.studentId}`)
-      .subscribe(res => {
-        console.log(res);
-        if(res['result'].includes(dateFormat(new Date(),"yyyy-mm-dd"))){
-          this.loggingState = true;
+        this.route.data.subscribe((data:  {date: Array<string>}) => {
+          console.log(data.date)
+          if(data.date.includes(dateFormat(new Date(),"yyyy-mm-dd"))){
+            this.loggingState = true;
           this.loggingInfo = '已签到';
-        }else{
-          setTimeout(() => {
-            this._notification.blank('今天的你非非常勤奋', '先签一下到吧~', {nzDuration: 0});
-          },500)
-        }
-        this.presenceInfo = res['result'];
-      })
-
+          } else{
+            setTimeout(() => {
+              this._notification.blank('今天的你非非常勤奋', '先签一下到吧~', {nzDuration: 0});
+            },500)
+          }
+          this.presenceInfo =data.date;
+        })
+       
+        
+       
+      
   }
   logging(){
     // this.loggingState = !this.loggingState;

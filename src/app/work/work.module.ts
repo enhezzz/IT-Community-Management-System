@@ -9,6 +9,7 @@ import {FormsModule} from "@angular/forms";
 import {CKEditorModule} from 'ng2-ckeditor';
 import { GetPresenceInfoService } from './get-presence-info.service';
 import { PresenceListComponent } from './presence-list/presence-list.component';
+import {  LogResolver } from './logging/logResolver.service';
 @NgModule({
   imports: [
     CommonModule,
@@ -18,6 +19,6 @@ import { PresenceListComponent } from './presence-list/presence-list.component';
     CKEditorModule
   ],
   declarations: [LoggingComponent, LearningNoteComponent, WriteNoteComponent, PresenceListComponent],
-  providers: [GetPresenceInfoService]
+  providers: [GetPresenceInfoService,LogResolver]
 })
 export class WorkModule { }
